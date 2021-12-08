@@ -1,0 +1,10 @@
+.index {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  height: 100vh;
+  padding: 5vh 5vw;
+  .card-view {
+    padding: 30px 20px;
+  }
+}

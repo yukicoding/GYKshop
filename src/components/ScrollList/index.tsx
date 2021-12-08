@@ -1,8 +1,8 @@
-import Taro from "@tarojs/taro";
-import { View, ScrollView } from "@tarojs/components";
-import "./index.scss";
+import Taro from '@tarojs/taro';
+import { View, ScrollView } from '@tarojs/components';
+import './index.scss';
 
-export default props => {
+export default (props) => {
   const scrollTop = 0;
   const Threshold = 20;
   return (
@@ -14,9 +14,9 @@ export default props => {
       lowerThreshold={Threshold}
       upperThreshold={Threshold}
     >
-      <View style={{ backgroundColor: "red" }}>A</View>
-      <View style={{ backgroundColor: "red" }}>B</View>
-      <View style={{ backgroundColor: "red" }}>C</View>
+      <View style={{ backgroundColor: 'red' }}>A</View>
+      <View style={{ backgroundColor: 'red' }}>B</View>
+      <View style={{ backgroundColor: 'red' }}>C</View>
     </ScrollView>
   );
 };
