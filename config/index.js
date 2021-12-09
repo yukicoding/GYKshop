@@ -9,7 +9,7 @@ const config = {
   },
   sourceRoot: 'src',
   outputRoot: 'dist',
-  plugins: [],
+  plugins: ['tarojs-router-next-plugin', '@quarkcms/plugin-mock'],
   defineConstants: {},
   copy: {
     patterns: [],

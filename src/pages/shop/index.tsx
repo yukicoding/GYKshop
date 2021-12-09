@@ -15,12 +15,11 @@ import {
 // import ScrollList from "../../components/ScrollList";
 // import "taro-ui/dist/style/components/button.scss"; // 按需引入
 import './index.scss';
-import '../../mock/api';
 export default function Index() {
   const [checked, setChecked] = useState(0);
   const fetchBuyList = async () => {
     Taro.request({
-      url: '/api',
+      url: 'http://127.0.0.1:9527/api/user/1',
       method: 'GET'
     }).then((res) => console.log(res));
   };

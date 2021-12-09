@@ -13,18 +13,10 @@ import './index.scss';
 
 export default function Index() {
   const [currentBtn, setCurrentBtn] = useState(0);
-  const toBuy = () => {
-    Taro.redirectTo({
-      url: '/pages/shop/index'
-    });
-  };
-  const toHelp = () => {
-    Taro.navigateTo({
-      url: '/pages/help/index'
-    });
-  };
+
   return (
     <View className="index">
+      this is me
       {/* <View className="btn-group at-row at-row__justify--around">
         <AtButton
           className="btn at-col at-col-4"
