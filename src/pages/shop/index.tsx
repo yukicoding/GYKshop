@@ -83,18 +83,11 @@ export default function Index() {
                 id={`right-${item.id}`}
               >
                 <AtDivider content={item.label} />
-                <View
-                  className="rightScroll-item-view"
-                  style={{ display: 'flex', justifyContent: 'space-around' }}
-                >
+                <View className="rightScroll-item-view">
                   {item.product?.map((product) => (
-                    <View
-                      className="rightScroll-item-prd-view"
-                      style={{ display: 'flex', flexDirection: 'column' }}
-                    >
+                    <View className="rightScroll-item-prd-view">
                       <Image
-                        className='className="rightScroll-item-prd-image'
-                        style={{ width: '30px', height: '30px' }}
+                        className="rightScroll-item-prd-image"
                         src={product.image}
                       />
                       <Text className='className="rightScroll-item-prd-text'>
