@@ -1,11 +1,6 @@
 // mock/api.ts
 
+import shop from './shop'
 export default {
-  'GET /api/user/1': {
-    name: "luckyadam"
-  },
-
-  'POST /api/upload': {
-    file: "xxxx"
-  }
+  shop
 }

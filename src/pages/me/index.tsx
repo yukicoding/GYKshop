@@ -13,7 +13,6 @@ import './index.scss';
 
 export default function Index() {
   const [currentBtn, setCurrentBtn] = useState(0);
-
   return (
     <View className="index">
       this is me

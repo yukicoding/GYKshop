@@ -47,6 +47,7 @@
     "mockjs": "^1.1.0",
     "react": "^17.0.0",
     "react-dom": "^17.0.0",
+    "taro-axios": "^1.1.1",
     "taro-ui": "^3.0.0-alpha.3",
     "tarojs-router-next": "^2.7.1",
     "tarojs-router-next-plugin": "^2.7.1"

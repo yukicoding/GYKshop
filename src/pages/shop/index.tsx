@@ -2,26 +2,27 @@
  * @description shop pages
  */
 import Taro from '@tarojs/taro';
+import { AtCard, AtGrid, AtDivider } from 'taro-ui';
 import { Component, useState, useEffect } from 'react';
-import {
-  View,
-  Text,
-  ScrollView,
-  Image,
-  Swiper,
-  SwiperItem
-} from '@tarojs/components';
+import { View, Image, ScrollView, Text, SwiperItem } from '@tarojs/components';
 // import { AtButton } from "taro-ui";
 // import ScrollList from "../../components/ScrollList";
 // import "taro-ui/dist/style/components/button.scss"; // 按需引入
 import './index.scss';
+
+import { getShopList } from '../../utils/request/shop';
+import { time } from 'console';
+
 export default function Index() {
   const [checked, setChecked] = useState(0);
+  const [shopList, setShopList] = useState<any[]>([]);
   const fetchBuyList = async () => {
-    Taro.request({
-      url: 'http://127.0.0.1:9527/api/user/1',
-      method: 'GET'
-    }).then((res) => console.log(res));
+    const data = await getShopList();
+    setShopList(data.data.list);
+    // Taro.request({
+    //   url: 'http://127.0.0.1:9527/api/user/1',
+    //   method: 'GET'
+    // }).then((res) => console.log(res));
   };
   useEffect(() => {
     fetchBuyList();
@@ -29,7 +30,6 @@ export default function Index() {
 
   const scrollTop = 0;
   const Threshold = 20;
-  const left = [1, 23, 4, 5, 6, 764, 5, 234, 532, 5, 32, 523, 5, 235];
 
   /**
    *
@@ -49,17 +49,17 @@ export default function Index() {
           lowerThreshold={Threshold}
           upperThreshold={Threshold}
         >
-          {left.map((item, index) => {
+          {shopList.map((item, index) => {
             return (
               <View
                 className={`leftScroll-item  ${
-                  checked === index ? 'active' : ''
+                  checked === item.id ? 'active' : ''
                 }`}
-                key={index}
-                id={`left-${index}`}
-                onClick={() => toRight(index)}
+                key={item.id}
+                id={`left-${item.id}`}
+                onClick={() => toRight(item.id)}
               >
-                {item}
+                {item.label}
               </View>
             );
           })}
@@ -75,19 +75,37 @@ export default function Index() {
           lowerThreshold={Threshold}
           upperThreshold={Threshold}
         >
-          {[12, 124, 124, 12, 4, 4, 2, 5, 15, 1, 5, 12, 512, 1].map(
-            (item, index) => {
-              return (
+          {shopList.map((item, index) => {
+            return (
+              <View
+                className={`rightScroll-item`}
+                key={item.id}
+                id={`right-${item.id}`}
+              >
+                <AtDivider content={item.label} />
                 <View
-                  className={`rightScroll-item`}
-                  key={index}
-                  id={`right-${index}`}
+                  className="rightScroll-item-view"
+                  style={{ display: 'flex', justifyContent: 'space-around' }}
                 >
-                  Test{index}
+                  {item.product?.map((product) => (
+                    <View
+                      className="rightScroll-item-prd-view"
+                      style={{ display: 'flex', flexDirection: 'column' }}
+                    >
+                      <Image
+                        className='className="rightScroll-item-prd-image'
+                        style={{ width: '30px', height: '30px' }}
+                        src={product.image}
+                      />
+                      <Text className='className="rightScroll-item-prd-text'>
+                        {product.label}
+                      </Text>
+                    </View>
+                  ))}
                 </View>
-              );
-            }
-          )}
+              </View>
+            );
+          })}
         </ScrollView>
       </View>
     </View>
